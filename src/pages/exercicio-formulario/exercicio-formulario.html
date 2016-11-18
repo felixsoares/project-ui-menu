@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{titulo}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+<ion-list no-lines>
+
+  <ion-item>
+    <ion-label floating>Nome</ion-label>
+    <ion-input type="text" [(ngModel)]="exercicio.nome"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Séries</ion-label>
+    <ion-input type="text" [(ngModel)]="exercicio.serie"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Repetições</ion-label>
+    <ion-input type="text" [(ngModel)]="exercicio.repeticao"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Peso</ion-label>
+    <ion-input type="text" [(ngModel)]="exercicio.peso"></ion-input>
+  </ion-item>
+
+  <button ion-button icon-right color="secondary" block type="submit" (click)="salvar()">
+    Salvar
+    <ion-icon name="checkmark"></ion-icon>
+  </button>
+
+</ion-list>
+
+</ion-content>

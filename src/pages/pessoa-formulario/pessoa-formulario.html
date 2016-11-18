@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{titulo}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+<ion-list no-lines>
+
+  <ion-item>
+    <ion-label floating>Nome</ion-label>
+    <ion-input type="text" [(ngModel)]="usuario.nome"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Idade</ion-label>
+    <ion-input type="text" [(ngModel)]="usuario.idade"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Peso</ion-label>
+    <ion-input type="text" [(ngModel)]="usuario.peso"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Altura</ion-label>
+    <ion-input type="text" [(ngModel)]="usuario.altura"></ion-input>
+  </ion-item>
+
+  <button ion-button icon-right color="secondary" block type="submit" (click)="salvar()">
+    Salvar
+    <ion-icon name="checkmark"></ion-icon>
+  </button>
+
+</ion-list>
+
+</ion-content>

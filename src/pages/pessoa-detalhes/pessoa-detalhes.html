@@ -1,0 +1,68 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detalhes do atleta</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<ion-item>
+  <ion-label>Nome: {{usuario.nome}}</ion-label>
+  <ion-label>Idade: {{usuario.idade}}</ion-label>
+</ion-item>
+<ion-item>
+  <ion-label>Peso: {{usuario.peso}}</ion-label>
+  <ion-label>Altura: {{usuario.altura}}</ion-label>
+</ion-item>
+
+<h2 padding>Lista de Exercícios</h2>
+
+<ion-grid>
+  <ion-row>
+    <ion-col width-70>Nome</ion-col>
+    <ion-col width-10 style="text-align: center;">Série</ion-col>
+    <ion-col width-10 style="text-align: center;">Repetições</ion-col>
+    <ion-col width-10 style="text-align: center;">Peso</ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-list>
+  <ion-item-sliding *ngFor="let item of exercicios">
+
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-70>{{item.nome}}</ion-col>
+          <ion-col width-10 style="text-align: center;">{{item.serie}}</ion-col>
+          <ion-col width-10 style="text-align: center;">{{item.repeticao}}</ion-col>
+          <ion-col width-10 style="text-align: center;">{{item.peso}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item-options side="left">
+      <button ion-button color="danger" (click)="removerExercicio(event, item)">
+        <ion-icon name="trash"></ion-icon>
+        Remover
+      </button>
+    </ion-item-options>
+    <ion-item-options side="right">
+      <button ion-button color="primary" (click)="editExercicio(event, item)">
+        <ion-icon name="create"></ion-icon>
+        Editar
+      </button>
+    </ion-item-options>
+    
+  </ion-item-sliding>
+</ion-list>
+
+<ion-fab bottom right>
+  <button ion-fab color="danger" (click)="goToCreateExercicio()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>
+
+</ion-content>

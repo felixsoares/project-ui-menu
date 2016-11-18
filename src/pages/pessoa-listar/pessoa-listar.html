@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pessoas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+<ion-list>
+  <ion-item-sliding *ngFor="let item of itens">
+    
+    <ion-item (click)="itemSelected(item)">
+      <ion-icon name="contact"></ion-icon>
+      {{item.nome}}
+    </ion-item>
+
+    <ion-item-options side="left">
+      <button ion-button color="danger" (click)="delete(event, item)">
+        <ion-icon name="trash"></ion-icon>
+        Remover
+      </button>
+    </ion-item-options>
+    <ion-item-options side="right" (click)="update(event, item)">
+      <button ion-button color="primary">
+        <ion-icon name="create"></ion-icon>
+        Editar
+      </button>
+    </ion-item-options>
+    
+  </ion-item-sliding>
+</ion-list>
+
+<ion-fab bottom right>
+  <button ion-fab color="danger" (click)="goToCreateUsuario()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>
+
+</ion-content>
