@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Camera } from 'ionic-native';
+import { AlertController } from 'ionic-angular';
 
 //MODEL
 import { Pessoa } from '../../models/pessoa';
@@ -16,15 +18,24 @@ import { PessoaListar } from '../pessoa-listar/pessoa-listar';
 })
 export class PessoaFormulario {
 
-  usuario = {};
+  imagem:string = "";
+
+  usuario = {
+    nome: "",
+    idade: "",
+    altura: "",
+    peso: "",
+    imagem: "https://www.outsystems.com/PortalTheme/img/UserImage.png?24860"
+  };
   titulo = "Adicionando Usuario";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public pessoaData: PessoaData) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public pessoaData: PessoaData, public alertCtrl: AlertController) {
       var usuarioAux = navParams.get('usuario');
 
       if(usuarioAux != undefined){
         this.usuario = usuarioAux;
         this.titulo = "Alterando Usuario";
+        this.imagem = usuarioAux.imagem;
       }
   }
 
@@ -52,6 +63,23 @@ export class PessoaFormulario {
       });
 
     }
+  }
+
+  abrirCamera(){
+
+    Camera.getPicture().then((imageData) => {
+
+      this.imagem = 'data:image/jpeg;base64,' + imageData;
+
+    }, (err) => {
+      let alert = this.alertCtrl.create({
+        title: 'Ops!',
+        subTitle: 'Erro ao tentar capturar a foto, tente novamente!',
+        buttons: ['OK']
+      });
+      alert.present();
+    });
+
   }
 
 }

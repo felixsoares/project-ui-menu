@@ -19,7 +19,12 @@ import { ExercicioData } from '../../providers/exercicio-data';
 })
 export class PessoaDetalhes {
 
-  usuario = {};
+  usuario = {
+    nome: "",
+    idade: "",
+    peso: "",
+    altura: ""
+  };
   exercicios = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 

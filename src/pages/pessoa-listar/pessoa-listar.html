@@ -14,7 +14,9 @@
   <ion-item-sliding *ngFor="let item of itens">
     
     <ion-item (click)="itemSelected(item)">
-      <ion-icon name="contact"></ion-icon>
+      <ion-avatar item-left>
+        <img src="{{item.imagem}}">
+      </ion-avatar>
       {{item.nome}}
     </ion-item>
 

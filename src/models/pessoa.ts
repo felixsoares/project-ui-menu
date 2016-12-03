@@ -4,4 +4,5 @@ export interface Pessoa{
     idade: string;
     peso: string;
     altura: string;
+    imagem: string;
 }

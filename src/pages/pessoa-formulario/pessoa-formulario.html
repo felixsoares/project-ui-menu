@@ -10,6 +10,10 @@
 
 <ion-list no-lines>
 
+  <div class="img-circle">
+    <img (click)="abrirCamera()" src="{{imagem}}" *ngIf="usuario.imagem">
+  </div>
+  
   <ion-item>
     <ion-label floating>Nome</ion-label>
     <ion-input type="text" [(ngModel)]="usuario.nome"></ion-input>

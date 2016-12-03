@@ -18,8 +18,14 @@ import { PessoaListar } from '../pessoa-listar/pessoa-listar';
 export class ExercicioFormulario {
 
   titulo = "Criando Exercício";
-  exercicio = {};
+  exercicio = {
+    nome: "",
+    serie: "",
+    repeticao: "",
+    peso: ""
+  };
   usuario = {};
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public exercicioData: ExercicioData) 
   {
