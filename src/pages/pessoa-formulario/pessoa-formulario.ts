@@ -18,14 +18,14 @@ import { PessoaListar } from '../pessoa-listar/pessoa-listar';
 })
 export class PessoaFormulario {
 
-  imagem:string = "";
+  imagem:string = "https://www.outsystems.com/PortalTheme/img/UserImage.png?24860";
 
   usuario = {
     nome: "",
     idade: "",
     altura: "",
     peso: "",
-    imagem: "https://www.outsystems.com/PortalTheme/img/UserImage.png?24860"
+    imagem: ""
   };
   titulo = "Adicionando Usuario";
 
@@ -67,7 +67,7 @@ export class PessoaFormulario {
 
   abrirCamera(){
 
-    Camera.getPicture().then((imageData) => {
+    Camera.getPicture({targetWidth: 500, targetHeight: 450}).then((imageData) => {
 
       this.imagem = 'data:image/jpeg;base64,' + imageData;
 

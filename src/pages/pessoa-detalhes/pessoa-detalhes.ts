@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams  } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 //MODEL
 import { Pessoa } from '../../models/pessoa';
@@ -28,7 +29,9 @@ export class PessoaDetalhes {
   exercicios = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-  public pessoaData: PessoaData, public exercicioData: ExercicioData) {
+    public pessoaData: PessoaData, public exercicioData: ExercicioData,
+    public alertCtrl: AlertController) {
+
       this.usuario = navParams.get('objeto');
 
       this.loadExercicios();
@@ -39,9 +42,26 @@ export class PessoaDetalhes {
   }
 
   removerExercicio(event, item){
-    this.exercicioData.delete(item).subscribe( res => {
-      this.navCtrl.push(PessoaListar);
+    let confirm = this.alertCtrl.create({
+      title: 'Removendo Exercício',
+      message: 'Esta operação não poderá ser desfeita, deseja remover?',
+      buttons: [
+        {
+          text: 'Não',
+          handler: () => {}
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            this.exercicioData.delete(item).subscribe( res => {
+              this.navCtrl.push(PessoaListar);
+            });
+          }
+        }
+      ]
     });
+
+    confirm.present();
   }
 
   goToCreateExercicio(){

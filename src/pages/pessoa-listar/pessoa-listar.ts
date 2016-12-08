@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 //MODEL
 import {Pessoa} from '../../models/pessoa';
@@ -21,7 +22,8 @@ export class PessoaListar {
 
   constructor(
     public navCtrl: NavController,
-    public pessoaData: PessoaData
+    public pessoaData: PessoaData,
+    public alertCtrl: AlertController
   ) {
     // Populate pessoas
     this.findAll();
@@ -45,9 +47,27 @@ export class PessoaListar {
   }
 
   delete(event, item){
-      this.pessoaData.delete(item).subscribe( res => {
-        this.navCtrl.push(PessoaListar);
-      });
+
+    let confirm = this.alertCtrl.create({
+      title: 'Removendo Usuário',
+      message: 'Esta operação não poderá ser desfeita, deseja remover?',
+      buttons: [
+        {
+          text: 'Não',
+          handler: () => {}
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            this.pessoaData.delete(item).subscribe( res => {
+              this.navCtrl.push(PessoaListar);
+            });
+          }
+        }
+      ]
+    });
+
+    confirm.present();
   }
   
   findAll(){
